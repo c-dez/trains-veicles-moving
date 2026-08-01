@@ -1,0 +1,15 @@
+RemoteTransform3D
+MeshInstance3D
+AnimatableBody3D
+CharacterBody3D
+CollisionShape3D
+PathFollow3D
+Path3D
+VehicleBody3D
+CSGBox3D
+CSGCombiner3D
+Marker3D
+CSGMesh3D
+CanvasLayer
+Node3D
+Node

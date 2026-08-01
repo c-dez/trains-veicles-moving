@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://wxhfbofuwmgb"]
+
+[ext_resource type="PackedScene" uid="uid://c3cm2dyhyu84l" path="res://gameplay/characters/player/player.tscn" id="1_0ktvc"]
+[ext_resource type="Script" uid="uid://copwtv14irmpa" path="res://levels/train/train_scene.gd" id="1_vftf3"]
+[ext_resource type="PackedScene" uid="uid://cnur6ieft5r0g" path="res://levels/train/train_wagon.tscn" id="2_ysfnp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xeyiv"]
+albedo_color = Color(0.33333334, 0.5529412, 0.08235294, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_xeyiv"]
+resource_local_to_scene = true
+closed = true
+_data = {
+"points": PackedVector3Array(-17.048517, 4.529953e-05, -4.4282665, 17.048517, -4.529953e-05, 4.4282665, 6.055803, 4.529953e-05, -44.19651, 0.6222019, 0, -23.004475, -0.6222019, 0, 23.004475, 43.617363, 4.529953e-05, -1.8043379, 19.77885, -7.677078e-05, -0.59687424, -19.77885, 7.677078e-05, 0.59687424, 1.1778316, 18.76832, 35.78842, -0.17601013, 4.529953e-05, 25.398684, 0.17601013, -4.529953e-05, -25.398684, -49.56562, 4.529953e-05, 5.5213695, -4.9054604, 0, 7.9156246, 4.9054604, 0, -7.9156246, -40.546062, 4.529953e-05, -39.17956),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="TrainScene" type="Node3D" unique_id=422986311]
+script = ExtResource("1_vftf3")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=383166106]
+use_collision = true
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=212605926]
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_xeyiv")
+metadata/_edit_lock_ = true
+
+[node name="Path3D" type="Path3D" parent="." unique_id=281083800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6442418, 0)
+curve = SubResource("Curve3D_xeyiv")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1205543748]
+transform = Transform3D(-0.2616456, -1.2009721e-06, -0.965149, -1.36205745e-05, 1, 2.4481467e-06, 0.965149, 1.3786831e-05, -0.2616456, 6.580836, 4.3936176e-05, -44.057148)
+progress = 0.5432299
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D" unique_id=1154624676]
+remote_path = NodePath("../../../TrainWagon")
+
+[node name="Player" parent="." unique_id=1212196175 instance=ExtResource("1_0ktvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.387794, -46.13809)
+slide_on_ceiling = false
+
+[node name="TrainWagon" parent="." unique_id=1499113401 instance=ExtResource("2_ysfnp")]
+transform = Transform3D(-0.2616456, -1.2009721e-06, -0.965149, -1.36205745e-05, 1, 2.4481467e-06, 0.965149, 1.3786831e-05, -0.2616456, 6.580836, 0.64428574, -44.057148)
+
+[node name="TrainWagon2" parent="TrainWagon" unique_id=2037375223 instance=ExtResource("2_ysfnp")]
+transform = Transform3D(1.0000002, -2.268706e-13, 7.4505806e-08, -1.1368684e-13, 1, -2.2737362e-13, -7.4505806e-08, 1.5075614e-14, 1.0000002, 0.04444313, -2.3841858e-07, 10.362591)
+
+[node name="TrainWagon3" parent="TrainWagon" unique_id=125888370 instance=ExtResource("2_ysfnp")]
+transform = Transform3D(1.0000008, 2.910383e-11, 1.4901161e-07, -2.1827873e-11, 1, 2.728484e-12, -1.4901161e-07, -1.0913936e-11, 1.0000007, 0.006752014, 5.7518482e-05, -10.536406)
