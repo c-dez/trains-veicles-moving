@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://mqufeol86snx"]
 
 [ext_resource type="PackedScene" uid="uid://dj402b7qc3e8j" path="res://gameplay/components/spawn_point/spawn_point.tscn" id="1_8wvq7"]
-[ext_resource type="PackedScene" uid="uid://0l7n36rsao8w" path="res://gameplay/characters/veicles/car_rigidBody/car_rigid_body.tscn" id="2_miw57"]
-[ext_resource type="PackedScene" uid="uid://c3cm2dyhyu84l" path="res://gameplay/characters/player/player.tscn" id="3_748n7"]
-[ext_resource type="PackedScene" uid="uid://ji0bwxdtmso4" path="res://gameplay/characters/veicles/car/car.tscn" id="4_ndv6i"]
+[ext_resource type="PackedScene" uid="uid://dfpatff4d5okj" path="res://addons/godot_3d_cursor/scenes/3d_cursor.tscn" id="5_ak8rs"]
+[ext_resource type="Script" uid="uid://dt04kfvdc21nb" path="res://addons/godot_3d_cursor/scripts/3d_cursor.gd" id="6_r5rgt"]
 
 [sub_resource type="GDScript" id="GDScript_miw57"]
 
@@ -107,15 +106,6 @@ size = Vector3(4, 42.876465, 4)
 [node name="SpawnPoint" parent="." unique_id=1047715984 instance=ExtResource("1_8wvq7")]
 transform = Transform3D(0.999909, 0.013491064, 5.8971317e-10, 0, -4.371139e-08, 1, 0.013491064, -0.999909, -4.370741e-08, -5.841671, 4.7499995, 3.0265474)
 
-[node name="CarRigidBody" parent="." unique_id=213247739 instance=ExtResource("2_miw57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.249939, 3.0308068, 0)
-
-[node name="Player" parent="." unique_id=1212196175 instance=ExtResource("3_748n7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4428825, 2.4922018, -3.9927797)
-
-[node name="Car" parent="." unique_id=937199132 instance=ExtResource("4_ndv6i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.816965, 3.3275824, 0)
-
 [node name="Obstaculos" type="CSGCombiner3D" parent="." unique_id=1713914987]
 use_collision = true
 
@@ -138,3 +128,18 @@ height = 9.474609
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Obstaculos" unique_id=1514574829]
 transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 41.822887, 0.28976357, -19.895817)
 height = 9.474609
+
+[node name="3DCursor" type="Marker3D" parent="." unique_id=1359915654 groups=["Plugin3DCursor"] instance=ExtResource("5_ak8rs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.374695, 0.25000095, -11.078751)
+gizmo_extents = 0.0
+script = ExtResource("6_r5rgt")
+metadata/cursor_id = 0
+metadata/size_scale = 1.0
+metadata/show_title_label = true
+metadata/show_number_label = true
+metadata/scale_affect_labels = true
+metadata/_edit_lock_ = true
+
+[node name="Characters" type="Node3D" parent="." unique_id=1272288937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.374695, 0.25000095, -11.078751)
+metadata/_edit_lock_ = true

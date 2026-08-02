@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 ScenePaths="*uid://yepkhuqw0l4d"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_3d_cursor/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
