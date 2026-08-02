@@ -1,3 +1,7 @@
+res://gameplay/characters/veicles/car_rigidBody/
+res://gameplay/characters/veicles/wheel/
+res://prototype/level_1/
+res://gameplay/characters/veicles/car/
 res://levels/train/
 res://core/autoloads/
 res://gameplay/components/spawn_point/

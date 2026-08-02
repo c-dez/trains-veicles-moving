@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://ji0bwxdtmso4"]
+
+[ext_resource type="Script" uid="uid://cc06fpop5v8r3" path="res://gameplay/characters/veicles/car/car.gd" id="1_8kv14"]
+[ext_resource type="PackedScene" uid="uid://d3eovln4ldbg6" path="res://gameplay/characters/veicles/wheel/wheel.tscn" id="2_podoa"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_podoa"]
+size = Vector3(1, 1, 4.83)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xlj0l"]
+size = Vector3(2, 1, 4.515)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_podoa"]
+size = Vector3(3.785, 3.51, 3)
+
+[node name="Car" type="VehicleBody3D" unique_id=937199132]
+mass = 500.0
+gravity_scale = 2.0
+script = ExtResource("1_8kv14")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=314991713]
+transform = Transform3D(1.9000001, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_podoa")
+
+[node name="Body2" type="MeshInstance3D" parent="." unique_id=382939585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 1, 1.2)
+mesh = SubResource("BoxMesh_podoa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=691351520]
+shape = SubResource("BoxShape3D_xlj0l")
+
+[node name="FR_Wheel" parent="." unique_id=379986965 instance=ExtResource("2_podoa")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.5, -0.49999994, -1.2)
+
+[node name="FL_Wheel" parent="." unique_id=210357035 instance=ExtResource("2_podoa")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1.5, -0.49999994, -1.2)
+
+[node name="BL_Wheel" parent="." unique_id=578289531 instance=ExtResource("2_podoa")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5, -0.49999994, 1.6999999)
+
+[node name="BR_Wheel" parent="." unique_id=887724221 instance=ExtResource("2_podoa")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.5, -0.49999994, 1.6999999)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=79048500]
+transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0, 3, 5)
+
+[node name="Label" type="Label" parent="." unique_id=1972509000]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.5
+offset_right = 40.5
+offset_bottom = 47.0
+grow_horizontal = 2
+
+[node name="EnterArea" type="Area3D" parent="." unique_id=974747132]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnterArea" unique_id=1960229621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.105)
+shape = SubResource("BoxShape3D_podoa")
+
+[node name="PlayerSeat" type="Marker3D" parent="." unique_id=229821565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.5)

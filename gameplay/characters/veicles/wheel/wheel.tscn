@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d3eovln4ldbg6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejhgq"]
+albedo_color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xlodj"]
+material = SubResource("StandardMaterial3D_ejhgq")
+height = 0.4
+
+[node name="Wheel" type="VehicleWheel3D" unique_id=379986965]
+wheel_radius = 0.6
+wheel_friction_slip = 5.0
+suspension_stiffness = 200.0
+suspension_max_force = 10000.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1092837233]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xlodj")

@@ -25,6 +25,7 @@ var current_health: int
 @export var gamepad_sens_v: float = 2
 
 
+
 func _ready() -> void:
     current_health = max_health
     _calculate_gravity()
@@ -33,13 +34,51 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
     _gravity(delta)
-    move(move_speed)
+    # move(move_speed)
     jump("a_button")
     move_and_slide()
+    # print(can_enter_car)
+    if on_veicle:
+        veicle()
+        exit_car()
+        pass
+    else:
+        move(move_speed)
+        enter_car()
     
 
 #----
+var veicle_node
+var on_veicle:bool = false
+var can_enter_car:bool = false
+func veicle()->void:
+    if veicle_node == null:
+        return
+    velocity = Vector3.ZERO
+    global_position = veicle_node.get_node('PlayerSeat').global_position
+   
+func enter_car()->void:
+    if can_enter_car:
+        if Input.is_action_just_pressed('x_button'):
+            on_veicle = true
+            veicle_node.is_player_in = true
+            # can_enter_car = false
+            print('enter')
+    pass
+
+func exit_car()->void:
+    # if on_veicle:
+        if Input.is_action_just_pressed('x_button'):
+            global_position.y += 3
+            on_veicle = false
+            veicle_node.is_player_in = false
+
+            print('exit')
+
+
+
 func move(_speed: float) -> void:
+
     var input := Input.get_vector("left", "right", "up", "down")
     var direction := (transform.basis * Vector3(input.x, 0, input.y)).normalized()
 

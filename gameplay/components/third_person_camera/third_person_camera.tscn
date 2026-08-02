@@ -11,3 +11,4 @@ script = ExtResource("1_s4r7h")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=37161550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75360274, 0)
+current = true

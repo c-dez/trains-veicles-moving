@@ -1,10 +1,11 @@
 extends SpringArm3D
+class_name ThridPersonCamera
 
 
 ## third person camera sensibilidad en player
 
 
-@onready var player: Player = owner
+@onready var player:  = owner
 # clamp vertical
 @onready var max_rad := deg_to_rad(50)
 @onready var min_rad := deg_to_rad(-70)

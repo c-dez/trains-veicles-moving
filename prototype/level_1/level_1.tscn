@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://mqufeol86snx"]
 
 [ext_resource type="PackedScene" uid="uid://dj402b7qc3e8j" path="res://gameplay/components/spawn_point/spawn_point.tscn" id="1_8wvq7"]
+[ext_resource type="PackedScene" uid="uid://0l7n36rsao8w" path="res://gameplay/characters/veicles/car_rigidBody/car_rigid_body.tscn" id="2_miw57"]
+[ext_resource type="PackedScene" uid="uid://c3cm2dyhyu84l" path="res://gameplay/characters/player/player.tscn" id="3_748n7"]
+[ext_resource type="PackedScene" uid="uid://ji0bwxdtmso4" path="res://gameplay/characters/veicles/car/car.tscn" id="4_ndv6i"]
 
 [sub_resource type="GDScript" id="GDScript_miw57"]
 
@@ -34,12 +37,36 @@ shadow_enabled = true
 use_collision = true
 
 [node name="Floor" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2141186791]
-size = Vector3(100, 0.5, 100)
+size = Vector3(10000, 0.5, 10000)
 material = SubResource("StandardMaterial3D_k22tv")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1676434594]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.3762197, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.412133, 1.3762197, -10)
 size = Vector3(7, 2.2524414, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D" unique_id=41151107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.55119, 1.3762197, -10)
+size = Vector3(7, 2.2524414, 1)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D" unique_id=945974138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.55119, 1.3762197, 26.225628)
+size = Vector3(7, 2.2524414, 1)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D" unique_id=301052797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.904087, 1.3762197, 26.225628)
+size = Vector3(7, 2.2524414, 1)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1401684307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.631905, 1.3762197, -28.030125)
+size = Vector3(7, 2.2524414, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=824094846]
+transform = Transform3D(1, 0, 0, 0, 0.26558977, 0.96408623, 0, -0.96408623, 0.26558977, 2.5367355, 1.4984381, -65.75929)
+size = Vector3(7, 14.3966675, 1)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1459918278]
+transform = Transform3D(1, 0, 0, 0, 0.26558977, 0.96408623, 0, -0.96408623, 0.26558977, 9.117722, 1.4984381, -65.75929)
+size = Vector3(7, 14.3966675, 1)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=80613614]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.2499995, 3.2608728)
@@ -49,5 +76,65 @@ size = Vector3(4, 4, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.2500004, 7.48555)
 size = Vector3(4, 2, 4)
 
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2067379032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.535656, 1.2500004, 7.48555)
+size = Vector3(4, 2, 4)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2137521358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.535656, 1.2500004, -20.150045)
+size = Vector3(4, 2, 4)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=624143517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.535656, 1.2500004, -6.923621)
+size = Vector3(4, 2, 4)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1832942607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.535656, 21.688232, 57.030342)
+size = Vector3(4, 42.876465, 4)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1824545137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.535656, 21.688232, -121.58074)
+size = Vector3(4, 42.876465, 4)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1320759448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.53894, 21.688232, -38.044106)
+size = Vector3(4, 42.876465, 4)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1863738862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.57617, 21.688232, -57.425842)
+size = Vector3(4, 42.876465, 4)
+
 [node name="SpawnPoint" parent="." unique_id=1047715984 instance=ExtResource("1_8wvq7")]
 transform = Transform3D(0.999909, 0.013491064, 5.8971317e-10, 0, -4.371139e-08, 1, 0.013491064, -0.999909, -4.370741e-08, -5.841671, 4.7499995, 3.0265474)
+
+[node name="CarRigidBody" parent="." unique_id=213247739 instance=ExtResource("2_miw57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.249939, 3.0308068, 0)
+
+[node name="Player" parent="." unique_id=1212196175 instance=ExtResource("3_748n7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4428825, 2.4922018, -3.9927797)
+
+[node name="Car" parent="." unique_id=937199132 instance=ExtResource("4_ndv6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.816965, 3.3275824, 0)
+
+[node name="Obstaculos" type="CSGCombiner3D" parent="." unique_id=1713914987]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Obstaculos" unique_id=820783416]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 28.85631, 0.28976357, -19.895817)
+height = 9.474609
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Obstaculos" unique_id=2099683219]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 31.044909, 0.28976357, -19.895817)
+height = 9.474609
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Obstaculos" unique_id=208665930]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 33.821198, 0.28976357, -19.895817)
+height = 9.474609
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Obstaculos" unique_id=925936628]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 37.582596, 0.28976357, -19.895817)
+height = 9.474609
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Obstaculos" unique_id=1514574829]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 41.822887, 0.28976357, -19.895817)
+height = 9.474609
