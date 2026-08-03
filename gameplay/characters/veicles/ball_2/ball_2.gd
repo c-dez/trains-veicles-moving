@@ -1,5 +1,5 @@
 extends RigidBody3D
-@onready var velocimetro: Label = $Label
+@onready var velocimetro_label: Label = $Label
 var time = 0.2
 var _time = time
 @onready var mesh: MeshInstance3D = $Mesh
@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
     speed_input = move_toward(
         speed_input,
         target_speed_input,
-        70* _delta
+        70 * _delta
 
     )
 
@@ -94,10 +94,15 @@ func _physics_process(delta: float) -> void:
     var lateral_speed := linear_velocity.dot(right)
 
     #Velocimetro
+    velocimetro(delta, forward_speed)
+
+
+
+
+func velocimetro(delta: float, forward_speed: Vector3) -> void:
     _time -= delta
     if _time < 0:
-        velocimetro.text = str(forward_speed * 3.6)
-        # velocimetro.text = str(speed_input)
+        velocimetro_label.text = str(forward_speed * 3.6)
         _time = time
 
 
