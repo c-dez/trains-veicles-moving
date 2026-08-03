@@ -1,5 +1,5 @@
 extends RigidBody3D
-@onready var velocimetro:Label =$Label
+@onready var velocimetro: Label = $Label
 var time = 0.2
 var _time = time
 @onready var mesh: MeshInstance3D = $Mesh
@@ -8,12 +8,14 @@ var _time = time
 
 var speed_input := 0.0
 var turn_input := 0.0
-var acceleration := 400.0
-var brake_force :float = 0.3
-var steering_angle: int = 20
+var acceleration := 500.0
+var brake_force: float = 2.5
+var steering_angle: float = 20
+var steering_mult = 1.0
 var turn_speed := 2.0
 var offset := Vector3(0.0, -1.0, 0.0)
-@export var curve:Curve
+@export var accel_curve: Curve
+@export var brake_curve: Curve
 
 
 # var direction = linear_velocity.normalized()
@@ -29,14 +31,30 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-    var trigger = Input.get_action_strength('R2_button')
-    var accel_mult = curve.sample(trigger)
+    var r2_trigger = Input.get_action_strength('R2_button')
+    var accel_mult = accel_curve.sample(r2_trigger)
+    var l2_trigger = Input.get_action_strength('L2_button')
+    var brake_mult = brake_curve.sample(l2_trigger)
+
     # print(accel_mult)
 
+    # var steering_multiplied = 40 * Input.get_action_strength('L2_button')
 
-    # speed_input = (Input.get_action_strength('R2_button') - Input.get_action_strength('L2_button')*0.5) * acceleration
+    # steering_angle= 40 if Input.is_action_pressed('L2_button') else 20
+    steering_angle = 20.0 + (brake_mult * 10)
+    # print(steering_angle)
 
-    speed_input = (acceleration * accel_mult) - Input.get_action_strength('L2_button')* acceleration *brake_force
+    var target_speed_input = (acceleration * accel_mult) - Input.get_action_strength('L2_button') * acceleration * brake_force
+
+   
+    # var target_speed_input = (acceleration * accel_mult) - (acceleration*brake_mult)
+
+    speed_input = move_toward(
+        speed_input,
+        target_speed_input,
+        70* _delta
+
+    )
 
     turn_input = (Input.get_action_strength('left') - Input.get_action_strength('right')) * deg_to_rad(steering_angle)
     
@@ -77,7 +95,10 @@ func _physics_process(delta: float) -> void:
 
     #Velocimetro
     _time -= delta
-    if _time <0:
-        velocimetro.text = str(forward_speed *3.6)
+    if _time < 0:
+        velocimetro.text = str(forward_speed * 3.6)
         # velocimetro.text = str(speed_input)
         _time = time
+## IDEAS para mejorar el feeling:
+## Podria al frenar incrementar lateral_speed, steering
+# inclinar camara al drifting

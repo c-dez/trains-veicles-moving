@@ -56,10 +56,11 @@ player.gd::GDScript::4071200800470462792::1785646888::0::1::::Player<>CharacterB
 ::res://gameplay/characters/veicles/::1785718188
 ::res://gameplay/characters/veicles/ball/::1785714035
 ball.gd::GDScript::8492480595517464329::1785714852::0::1::::<>Node3D<><>0<>0<><>::
-::res://gameplay/characters/veicles/ball_2/::1785726753
-ball_2.gd::GDScript::3813367098778708198::1785725883::0::1::::<>RigidBody3D<><>0<>0<><>::
-ball_2.tscn::PackedScene::4656022791924257273::1785726753::0::1::::<><><>0<>0<><>::uid://bulhumogrbe5c::::res://gameplay/characters/veicles/ball_2/ball_2.gd<>uid://dhat277a0vby0::::res://gameplay/characters/veicles/ball_2/new_curve.tres
-new_curve.tres::Curve::7651787526058706565::1785726753::0::1::::<><><>0<>0<><>::
+::res://gameplay/characters/veicles/ball_2/::1785740467
+ball_2.gd::GDScript::3813367098778708198::1785740561::0::1::::<>RigidBody3D<><>0<>0<><>::
+ball_2.tscn::PackedScene::4656022791924257273::1785740582::0::1::::<><><>0<>0<><>::uid://bulhumogrbe5c::::res://gameplay/characters/veicles/ball_2/ball_2.gd<>uid://cugnpr7oj4cbm::::res://gameplay/characters/veicles/ball_2/brake_curve.tres
+new_curve.tres::Curve::7651787526058706565::1785739679::0::1::::<><><>0<>0<><>::
+brake_curve.tres::Curve::6189821557465704814::1785740582::0::1::::<><><>0<>0<><>::
 ::res://gameplay/characters/veicles/car/::1785654962
 car.gd::GDScript::4966720464459045706::1785656562::0::1::::<>VehicleBody3D<><>0<>0<><>::
 car.tscn::PackedScene::649735516594230513::1785654962::0::1::::<><><>0<>0<><>::uid://cc06fpop5v8r3::::res://gameplay/characters/veicles/car/car.gd<>uid://d3eovln4ldbg6::::res://gameplay/characters/veicles/wheel/wheel.tscn
@@ -90,8 +91,9 @@ train_scene.gd::GDScript::5787821693038875734::1785442446::0::1::::<>Node3D<><>0
 train_scene.tscn::PackedScene::1592069270704371597::1785446265::0::1::::<><><>0<>0<><>::uid://c3cm2dyhyu84l::::res://gameplay/characters/player/player.tscn<>uid://copwtv14irmpa::::res://levels/train/train_scene.gd<>uid://cnur6ieft5r0g::::res://levels/train/train_wagon.tscn
 train_wagon.tscn::PackedScene::5727671864869686236::1785442431::0::1::::<><><>0<>0<><>::
 ::res://prototype/::1785437393
-::res://prototype/level_1/::1785719165
-level_1.tscn::PackedScene::876519668811989633::1785719165::0::1::::<><><>0<>0<><>::uid://dj402b7qc3e8j::::res://gameplay/components/spawn_point/spawn_point.tscn<>uid://ds826dlcacjn2::::res://gameplay/characters/veicles/ball/ball.gd<>uid://0l7n36rsao8w::::res://gameplay/characters/veicles/car_rigidBody/car_rigid_body.tscn<>uid://b7loarqwfqqmr::::res://gameplay/characters/veicles/ball_2/ball_2.tscn
+::res://prototype/level_1/::1785739880
+level_1.tscn::PackedScene::876519668811989633::1785739880::0::1::::<><><>0<>0<><>::uid://dj402b7qc3e8j::::res://gameplay/components/spawn_point/spawn_point.tscn<>uid://0l7n36rsao8w::::res://gameplay/characters/veicles/car_rigidBody/car_rigid_body.tscn<>uid://b7loarqwfqqmr::::res://gameplay/characters/veicles/ball_2/ball_2.tscn<>uid://dfpatff4d5okj::::res://addons/godot_3d_cursor/scenes/3d_cursor.tscn<>uid://r7fqmh0ecrtj::::res://prototype/level_1/meta.gd
+meta.gd::GDScript::1259603229877936515::1785735464::0::1::::<>Area3D<><>0<>0<><>::
 ::res://prototype/level_2/::1785437393
 level_2.tscn::PackedScene::6919513490780811483::1785437393::0::1::::<><><>0<>0<><>::
 ::res://ui/::1785437393

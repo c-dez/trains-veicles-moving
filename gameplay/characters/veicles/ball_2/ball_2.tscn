@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://b7loarqwfqqmr"]
 
 [ext_resource type="Script" uid="uid://bulhumogrbe5c" path="res://gameplay/characters/veicles/ball_2/ball_2.gd" id="1_e6xge"]
-[ext_resource type="Curve" uid="uid://dhat277a0vby0" path="res://gameplay/characters/veicles/ball_2/new_curve.tres" id="2_5eiyd"]
+[ext_resource type="Curve" uid="uid://cugnpr7oj4cbm" path="res://gameplay/characters/veicles/ball_2/brake_curve.tres" id="2_5eiyd"]
+[ext_resource type="Curve" uid="uid://dhat277a0vby0" path="res://gameplay/characters/veicles/ball_2/accel_curve.tres" id="2_y58nf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bfhhu"]
+rough = true
 bounce = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_e6xge"]
@@ -17,7 +19,8 @@ physics_material_override = SubResource("PhysicsMaterial_bfhhu")
 gravity_scale = 5.0
 angular_damp = 3.0
 script = ExtResource("1_e6xge")
-curve = ExtResource("2_5eiyd")
+accel_curve = ExtResource("2_y58nf")
+brake_curve = ExtResource("2_5eiyd")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=622788150]
 transform = Transform3D(1.511706, 0, 0, 0, 1, 0, 0, 0, 2.1734254, 0, 0, 0)
@@ -25,7 +28,7 @@ mesh = SubResource("BoxMesh_e6xge")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Mesh" unique_id=532459588]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.933792, 0)
-spring_length = 5.0
+spring_length = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="Mesh/SpringArm3D" unique_id=137436697]
 transform = Transform3D(1, 0, 0, 0, 0.9496937, 0.3131804, 0, -0.3131804, 0.9496937, 0, 0, 5)
