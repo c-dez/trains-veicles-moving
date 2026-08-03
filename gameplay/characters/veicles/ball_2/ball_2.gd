@@ -99,6 +99,9 @@ func _physics_process(delta: float) -> void:
         velocimetro.text = str(forward_speed * 3.6)
         # velocimetro.text = str(speed_input)
         _time = time
+
+
 ## IDEAS para mejorar el feeling:
 ## Podria al frenar incrementar lateral_speed, steering
 # inclinar camara al drifting
+# problema: el mejor feling lo tengo cuando no suelto el acelerador y freno para controlar steering, el problema es que nop tiene caso que el jugador interactue con acelerador y quiero que sea una mezvla entre acelerador y freno para drift
