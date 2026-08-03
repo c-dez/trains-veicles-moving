@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b7loarqwfqqmr"]
+
+[ext_resource type="Script" uid="uid://bulhumogrbe5c" path="res://gameplay/characters/veicles/ball_2/ball_2.gd" id="1_e6xge"]
+[ext_resource type="Curve" uid="uid://dhat277a0vby0" path="res://gameplay/characters/veicles/ball_2/new_curve.tres" id="2_5eiyd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bfhhu"]
+bounce = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_e6xge"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5eiyd"]
+radius = 1.0
+
+[node name="Ball_2" type="RigidBody3D" unique_id=663138485]
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_bfhhu")
+gravity_scale = 5.0
+angular_damp = 3.0
+script = ExtResource("1_e6xge")
+curve = ExtResource("2_5eiyd")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=622788150]
+transform = Transform3D(1.511706, 0, 0, 0, 1, 0, 0, 0, 2.1734254, 0, 0, 0)
+mesh = SubResource("BoxMesh_e6xge")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Mesh" unique_id=532459588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.933792, 0)
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Mesh/SpringArm3D" unique_id=137436697]
+transform = Transform3D(1, 0, 0, 0, 0.9496937, 0.3131804, 0, -0.3131804, 0.9496937, 0, 0, 5)
+current = true
+fov = 95.7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1323369458]
+shape = SubResource("SphereShape3D_5eiyd")
+
+[node name="Ray" type="RayCast3D" parent="." unique_id=1683764935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9175177, 0)
+
+[node name="Label" type="Label" parent="." unique_id=1041655198]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.089
+anchor_bottom = 0.59300005
+offset_left = 206.0
+offset_top = -3.0
+offset_right = 206.472
+offset_bottom = 8.235962
+grow_vertical = 2

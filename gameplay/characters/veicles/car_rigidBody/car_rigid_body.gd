@@ -8,10 +8,10 @@ var rest_dist: float = 0.5
 var spring_strenght: float = 160
 var spring_damping: int = 2
 
-@onready var rayFR: RayCast3D = $RayFR
-@onready var rayFL: RayCast3D = $RayFL
-@onready var rayBR: RayCast3D = $RayBR
-@onready var rayBL: RayCast3D = $RayBL
+#@onready var rayFR: RayCast3D = $RayFR
+#@onready var rayFL: RayCast3D = $RayFL
+#@onready var rayBR: RayCast3D = $RayBR
+#@onready var rayBL: RayCast3D = $RayBL
 
 @export var wheels:Array[RayCast3D] 
 
