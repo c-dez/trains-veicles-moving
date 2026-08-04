@@ -28,7 +28,7 @@ mesh = SubResource("BoxMesh_e6xge")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Mesh" unique_id=532459588]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.933792, 0)
-spring_length = 0.0
+spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="Mesh/SpringArm3D" unique_id=137436697]
 transform = Transform3D(1, 0, 0, 0, 0.9496937, 0.3131804, 0, -0.3131804, 0.9496937, 0, 0, 5)

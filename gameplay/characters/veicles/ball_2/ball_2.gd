@@ -13,7 +13,7 @@ var brake_force: float = 2.5
 var steering_angle: float = 20
 var steering_mult = 1.0
 var turn_speed := 2.0
-var offset := Vector3(0.0, -1.0, 0.0)
+# var offset := Vector3(0.0, -1.0, 0.0)
 @export var accel_curve: Curve
 @export var brake_curve: Curve
 
@@ -21,6 +21,7 @@ var offset := Vector3(0.0, -1.0, 0.0)
 # var direction = linear_velocity.normalized()
 
 # var forward_speed = forward.dot(direction)
+
 
 
 func _ready() -> void:
@@ -36,11 +37,10 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-    mesh.global_position = global_position
-    ray.global_position = global_position + Vector3(0.0, -0.9, 0.0)
-    # spring.global_position = global_position
+    set_object_global_position(mesh)
+    set_object_global_position(ray,Vector3(0,-0.9,0))
+   
 
-    # spring.rotation.y = mesh.rotation.y
     if not ray.is_colliding():
         return
 
@@ -81,7 +81,7 @@ func set_acceleration(_delta: float) -> void:
 
     # Suma a steering_angle al frenar
     steering_angle = 20 + (brake_mult * 10)
-
+    ##SEPARAR BREAK Y ACCEL
     var target_speed_input = (acceleration * accel_mult) - Input.get_action_strength('L2_button') * acceleration * brake_force
 
     #hace que la aplicacion de speed sea interpolado
@@ -107,3 +107,8 @@ func set_turn_input() -> void:
 ## Podria al frenar incrementar lateral_speed, steering
 # inclinar camara al drifting
 # problema: el mejor feling lo tengo cuando no suelto el acelerador y freno para controlar steering, el problema es que nop tiene caso que el jugador interactue con acelerador y quiero que sea una mezvla entre acelerador y freno para drift
+
+## object.global_position = global_position
+func set_object_global_position(object:Node3D, _offset:Vector3 = Vector3.ZERO)->void:
+    object.global_position = global_position +_offset
+    pass
