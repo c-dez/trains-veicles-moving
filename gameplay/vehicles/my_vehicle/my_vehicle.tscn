@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b20g3ar18t06o"]
+
+[ext_resource type="Script" uid="uid://cm48pgheafu01" path="res://gameplay/vehicles/my_vehicle/my_vehicle.gd" id="1_mtt6d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rps7d"]
+size = Vector3(2, 0.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtt6d"]
+size = Vector3(2, 0.5, 4)
+
+[node name="MyVehicle" type="VehicleBody3D" unique_id=370727612]
+script = ExtResource("1_mtt6d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1271408489]
+mesh = SubResource("BoxMesh_rps7d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=458739709]
+shape = SubResource("BoxShape3D_mtt6d")
+
+[node name="FLWheel" type="VehicleWheel3D" parent="." unique_id=1041154951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0336946, 0, 1.4705853)
+
+[node name="FRWheel" type="VehicleWheel3D" parent="." unique_id=298628948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9663054, 0, 1.4705853)
+
+[node name="RLWheel" type="VehicleWheel3D" parent="." unique_id=245779397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0336946, 0, -1.5294147)
+
+[node name="RRWheel" type="VehicleWheel3D" parent="." unique_id=1627697624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9663054, 0, -1.5294147)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1053610257]
+transform = Transform3D(-1, 0, -8.742278e-08, -1.8479076e-08, 0.97740483, 0.21137598, 8.544745e-08, 0.21137598, -0.97740483, 0, 1.8530118, -5)

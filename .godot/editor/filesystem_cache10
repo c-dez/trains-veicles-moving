@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1785877008
+::res://::1785879373
 _icon.svg::CompressedTexture2D::7529472994851353181::1785437393::1785437393::1::::<><><>0<>0<>49c04eaa32bbbccd5015602f8272d284<>res://.godot/imported/_icon.svg-b6805cafd738bd25799945300ae3bea3.ctex::
 icon.svg::CompressedTexture2D::417352315506991021::1785437393::1785437393::1::::<><><>0<>0<>56666f46b83c9293a00083599608d2ee<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1785437393::0::1::::<><><>0<>0<><>::
@@ -45,7 +45,7 @@ main_game.gd::GDScript::1335236164463996740::1785437393::0::1::::MainGame<>Node3
 main_game.tscn::PackedScene::3471340393318369668::1785437393::0::1::::<><><>0<>0<><>::uid://ta2e6dlcit1e::::res://core/main_game/main_game.gd
 readme.md::TextFile::-1::1785437393::0::1::::<><><>0<>0<><>::
 ::res://debug/::1785437393
-::res://gameplay/::1785437393
+::res://gameplay/::1785879051
 ::res://gameplay/characters/::1785620064
 ::res://gameplay/characters/player/::1785645546
 detect_veicle_area.gd::GDScript::6011068343407512761::1785652567::0::1::::<>Area3D<><>0<>0<><>::
@@ -83,6 +83,13 @@ spawn_point.tscn::PackedScene::7852394842631759099::1785437393::0::1::::<><><>0<
 third_person_camera.tscn::PackedScene::7417134921468730706::1785641912::0::1::::<><><>0<>0<><>::uid://d2gexkqqw8u0f::::res://gameplay/components/third_person_camera/scripts/camera.gd
 ::res://gameplay/components/third_person_camera/scripts/::1785630276
 camera.gd::GDScript::9067031587769473935::1785630276::0::1::::ThridPersonCamera<>SpringArm3D<><>0<>0<><>::
+::res://gameplay/vehicles/::1785877137
+::res://gameplay/vehicles/my_vehicle/::1785878972
+my_vehicle.gd::GDScript::5677005219715884964::1785878788::0::1::::<>VehicleBody3D<><>0<>0<><>::
+my_vehicle.tscn::PackedScene::4333543237445277624::1785878972::0::1::::<><><>0<>0<><>::uid://cm48pgheafu01::::res://gameplay/vehicles/my_vehicle/my_vehicle.gd
+::res://gameplay/vhehicles/::1785879051
+::res://gameplay/vhehicles/my_vehicle/::1785879052
+my_vehicle.gd::GDScript::2624807368330630492::1785879362::0::1::::<>VehicleBody3D<><>0<>0<><>::
 ::res://levels/::1785437672
 ::res://levels/demo_level/::1785437393
 demo_level.tscn::PackedScene::4642032215826235641::1785437393::0::1::::<><><>0<>0<><>::uid://c3cm2dyhyu84l::::res://gameplay/characters/player/player.tscn<>uid://mqufeol86snx::::res://prototype/level_1/level_1.tscn<>uid://dih1d850mt4k3::::res://gameplay/components/hitbox/hitbox.tscn
@@ -91,8 +98,8 @@ train_scene.gd::GDScript::5787821693038875734::1785442446::0::1::::<>Node3D<><>0
 train_scene.tscn::PackedScene::1592069270704371597::1785446265::0::1::::<><><>0<>0<><>::uid://c3cm2dyhyu84l::::res://gameplay/characters/player/player.tscn<>uid://copwtv14irmpa::::res://levels/train/train_scene.gd<>uid://cnur6ieft5r0g::::res://levels/train/train_wagon.tscn
 train_wagon.tscn::PackedScene::5727671864869686236::1785442431::0::1::::<><><>0<>0<><>::
 ::res://prototype/::1785437393
-::res://prototype/level_1/::1785825021
-level_1.tscn::PackedScene::876519668811989633::1785825021::0::1::::<><><>0<>0<><>::uid://dj402b7qc3e8j::::res://gameplay/components/spawn_point/spawn_point.tscn<>uid://0l7n36rsao8w::::res://gameplay/characters/veicles/car_rigidBody/car_rigid_body.tscn<>uid://r7fqmh0ecrtj::::res://prototype/level_1/meta.gd
+::res://prototype/level_1/::1785879083
+level_1.tscn::PackedScene::876519668811989633::1785879083::0::1::::<><><>0<>0<><>::uid://dj402b7qc3e8j::::res://gameplay/components/spawn_point/spawn_point.tscn<>uid://dfpatff4d5okj::::res://addons/godot_3d_cursor/scenes/3d_cursor.tscn<>uid://dt04kfvdc21nb::::res://addons/godot_3d_cursor/scripts/3d_cursor.gd<>uid://r7fqmh0ecrtj::::res://prototype/level_1/meta.gd
 meta.gd::GDScript::1259603229877936515::1785742236::0::1::::<>Area3D<><>0<>0<><>::
 ::res://prototype/level_2/::1785437393
 level_2.tscn::PackedScene::6919513490780811483::1785437393::0::1::::<><><>0<>0<><>::
