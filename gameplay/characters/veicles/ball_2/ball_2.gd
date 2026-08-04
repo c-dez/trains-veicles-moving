@@ -18,10 +18,8 @@ var turn_speed := 2.0
 @export var brake_curve: Curve
 
 
-# var direction = linear_velocity.normalized()
-
-# var forward_speed = forward.dot(direction)
-
+# var forward_speed = linear_velocity.dot(forward)
+# var lateral_speed := linear_velocity.dot(right)
 
 
 func _ready() -> void:
@@ -38,33 +36,14 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
     set_object_global_position(mesh)
-    set_object_global_position(ray,Vector3(0,-0.9,0))
+    set_object_global_position(ray, Vector3(0, -0.9, 0))
    
-
     if not ray.is_colliding():
         return
+
     girar(delta)
-    
-
-
-
-    ## forward direction
-    var forward = - mesh.global_transform.basis.z
-    ## right direction
-    var right := mesh.global_transform.basis.x
-
-    apply_central_force(forward * speed_input)
-
-    # var dir = linear_velocity.normalized()
-
-    # var forward_speed = forward.dot(dir)
-    # print(forward_speed)
-
-    var forward_speed = linear_velocity.dot(forward)
-    var lateral_speed := linear_velocity.dot(right)
-
-    #Velocimetro
-    velocimetro(delta, forward_speed)
+    apply_acceleration(delta)
+    pass
 
 
 func set_acceleration(_delta: float) -> void:
@@ -83,8 +62,8 @@ func set_acceleration(_delta: float) -> void:
         speed_input,
         target_speed_input,
         70 * _delta
-
     )
+    pass
 
 
 func velocimetro(delta: float, forward_speed: float) -> void:
@@ -92,9 +71,13 @@ func velocimetro(delta: float, forward_speed: float) -> void:
     if _time < 0:
         velocimetro_label.text = str(forward_speed * 3.6)
         _time = time
+    pass
+
+
 ## toma los inputs de jugador y los convierte a radians para girar direccion de movimiento y los asigna a turn_input
 func set_turn_input() -> void:
     turn_input = (Input.get_action_strength('left') - Input.get_action_strength('right')) * deg_to_rad(steering_angle)
+    pass
 
 
 ## IDEAS para mejorar el feeling:
@@ -102,13 +85,14 @@ func set_turn_input() -> void:
 # inclinar camara al drifting
 # problema: el mejor feling lo tengo cuando no suelto el acelerador y freno para controlar steering, el problema es que nop tiene caso que el jugador interactue con acelerador y quiero que sea una mezvla entre acelerador y freno para drift
 
+
 ## object.global_position = global_position
-func set_object_global_position(object:Node3D, _offset:Vector3 = Vector3.ZERO)->void:
-    object.global_position = global_position +_offset
+func set_object_global_position(object: Node3D, _offset: Vector3 = Vector3.ZERO) -> void:
+    object.global_position = global_position + _offset
     pass
 
 
-func girar(delta:float)->void:
+func girar(delta: float) -> void:
     if speed_input > 1.0 or speed_input < 1.0:
         var current_basis := mesh.global_transform.basis
         var rotated_basis := current_basis.rotated(current_basis.y, turn_input)
@@ -116,6 +100,20 @@ func girar(delta:float)->void:
             rotated_basis.orthonormalized(), delta * turn_speed
         )
         mesh.global_basis = smoothed_basis.orthonormalized()
-
-    
     pass
+
+
+func apply_acceleration(delta: float) -> void:
+    ## forward direction
+    var forward := -mesh.global_transform.basis.z
+    ## right direction
+    var right := mesh.global_transform.basis.x
+
+    apply_central_force(forward * speed_input)
+    velocimetro(delta, get_moving_speed(forward))
+    pass
+
+
+func get_moving_speed(forward_basis: Vector3) -> float:
+    var forward_speed := linear_velocity.dot(forward_basis)
+    return forward_speed
