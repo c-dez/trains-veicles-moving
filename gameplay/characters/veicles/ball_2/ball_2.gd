@@ -1,29 +1,30 @@
 extends RigidBody3D
-@onready var velocimetro_label: Label = $Label
-var time = 0.2
-var _time = time
-@onready var mesh: MeshInstance3D = $Mesh
-@onready var ray: RayCast3D = $Ray
-# @onready var spring: SpringArm3D = $SpringArm3D
+
+
+@export var accel_curve: Curve
+@export var brake_curve: Curve
+
+var velocimetro_time = 0.2
+var _velocimetro_time = velocimetro_time
 
 var speed_input := 0.0
 var turn_input := 0.0
 var acceleration := 500.0
-var brake_force: float = 2.5
-var steering_angle: float = 20
-var steering_mult = 1.0
+var brake_force := 2.5
+var steering_angle := 20.0
+var steering_mult := 1.0
 var turn_speed := 2.0
-# var offset := Vector3(0.0, -1.0, 0.0)
-@export var accel_curve: Curve
-@export var brake_curve: Curve
 
+@onready var velocimetro_label: Label = $Label
+@onready var mesh: MeshInstance3D = $Mesh
+@onready var ray: RayCast3D = $Ray
+# @onready var spring: SpringArm3D = $SpringArm3D
 
 
 ## IDEAS para mejorar el feeling:
 ## Podria al frenar incrementar lateral_speed, steering
 # inclinar camara al drifting
 # problema: el mejor feling lo tengo cuando no suelto el acelerador y freno para controlar steering, el problema es que nop tiene caso que el jugador interactue con acelerador y quiero que sea una mezvla entre acelerador y freno para drift
-
 
 
 func _ready() -> void:
@@ -71,10 +72,10 @@ func set_acceleration(_delta: float) -> void:
 
 
 func velocimetro(delta: float, forward_speed: float) -> void:
-    _time -= delta
-    if _time < 0:
+    _velocimetro_time -= delta
+    if _velocimetro_time < 0:
         velocimetro_label.text = str(forward_speed * 3.6)
-        _time = time
+        _velocimetro_time = velocimetro_time
     pass
 
 
