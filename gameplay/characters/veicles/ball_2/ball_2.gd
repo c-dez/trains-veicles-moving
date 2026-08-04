@@ -61,13 +61,16 @@ func set_acceleration(_delta: float) -> void:
     # Suma a steering_angle al frenar
     steering_angle = 20 + (brake_mult * 10)
     ##SEPARAR BREAK Y ACCEL
-    var target_speed_input = (acceleration * accel_mult) - Input.get_action_strength('L2_button') * acceleration * brake_force
+    # var target_speed_input = (acceleration * accel_mult) - Input.get_action_strength('L2_button') * acceleration * brake_force
+    var target_speed: float = acceleration * accel_mult
+    if brake > 0.0:
+        target_speed = 0.0
 
     #hace que la aplicacion de speed sea interpolado
     speed_input = move_toward(
         speed_input,
-        target_speed_input,
-        70 * _delta
+        target_speed,
+        (70 + brake * 120.0 )* _delta
     )
     pass
 
