@@ -102,18 +102,18 @@ func girar(delta: float) -> void:
         mesh.global_basis = smoothed_basis.orthonormalized()
     pass
 
-
 func apply_acceleration(delta: float) -> void:
     ## forward direction
     var forward := -mesh.global_transform.basis.z
     ## right direction
-    var right := mesh.global_transform.basis.x
+    # var right := mesh.global_transform.basis.x
 
     apply_central_force(forward * speed_input)
     velocimetro(delta, get_moving_speed(forward))
     pass
 
 
+## Calcula velocidad en m/s de movimiento hacia adelante, tambien puede calcul;ar la velocidad lateral dandole right_basis
 func get_moving_speed(forward_basis: Vector3) -> float:
     var forward_speed := linear_velocity.dot(forward_basis)
     return forward_speed
