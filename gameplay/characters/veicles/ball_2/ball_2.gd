@@ -32,9 +32,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
     set_acceleration(_delta)
+    set_turn_input()
 
-    turn_input = (Input.get_action_strength('left') - Input.get_action_strength('right')) * deg_to_rad(steering_angle)
-    
 
 func _physics_process(delta: float) -> void:
     mesh.global_position = global_position
@@ -99,6 +98,9 @@ func velocimetro(delta: float, forward_speed: float) -> void:
     if _time < 0:
         velocimetro_label.text = str(forward_speed * 3.6)
         _time = time
+## toma los inputs de jugador y los convierte a radians para girar direccion de movimiento y los asigna a turn_input
+func set_turn_input() -> void:
+    turn_input = (Input.get_action_strength('left') - Input.get_action_strength('right')) * deg_to_rad(steering_angle)
 
 
 ## IDEAS para mejorar el feeling:
