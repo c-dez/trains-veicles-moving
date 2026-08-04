@@ -43,17 +43,11 @@ func _physics_process(delta: float) -> void:
 
     if not ray.is_colliding():
         return
+    girar(delta)
+    
 
-    if speed_input > 1.0 or speed_input < 1.0:
-        var current_basis := mesh.global_transform.basis
-        var rotated_basis := current_basis.rotated(current_basis.y, turn_input)
-        # var smoothed_basis := current_basis.slerp(rotated_basis, delta * turn_speed)
-        var smoothed_basis := current_basis.orthonormalized().slerp(
-            rotated_basis.orthonormalized(), delta * turn_speed
-        )
 
-        mesh.global_basis = smoothed_basis.orthonormalized()
-        pass
+
     ## forward direction
     var forward = - mesh.global_transform.basis.z
     ## right direction
@@ -111,4 +105,17 @@ func set_turn_input() -> void:
 ## object.global_position = global_position
 func set_object_global_position(object:Node3D, _offset:Vector3 = Vector3.ZERO)->void:
     object.global_position = global_position +_offset
+    pass
+
+
+func girar(delta:float)->void:
+    if speed_input > 1.0 or speed_input < 1.0:
+        var current_basis := mesh.global_transform.basis
+        var rotated_basis := current_basis.rotated(current_basis.y, turn_input)
+        var smoothed_basis := current_basis.orthonormalized().slerp(
+            rotated_basis.orthonormalized(), delta * turn_speed
+        )
+        mesh.global_basis = smoothed_basis.orthonormalized()
+
+    
     pass
