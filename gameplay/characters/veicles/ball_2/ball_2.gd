@@ -31,30 +31,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-    var r2_trigger = Input.get_action_strength('R2_button')
-    var accel_mult = accel_curve.sample(r2_trigger)
-    var l2_trigger = Input.get_action_strength('L2_button')
-    var brake_mult = brake_curve.sample(l2_trigger)
-
-    # print(accel_mult)
-
-    # var steering_multiplied = 40 * Input.get_action_strength('L2_button')
-
-    # steering_angle= 40 if Input.is_action_pressed('L2_button') else 20
-    steering_angle = 20.0 + (brake_mult * 10)
-    # print(steering_angle)
-
-    var target_speed_input = (acceleration * accel_mult) - Input.get_action_strength('L2_button') * acceleration * brake_force
-
-   
-    # var target_speed_input = (acceleration * accel_mult) - (acceleration*brake_mult)
-
-    speed_input = move_toward(
-        speed_input,
-        target_speed_input,
-        70 * _delta
-
-    )
+    set_acceleration(_delta)
 
     turn_input = (Input.get_action_strength('left') - Input.get_action_strength('right')) * deg_to_rad(steering_angle)
     
@@ -97,6 +74,24 @@ func _physics_process(delta: float) -> void:
     velocimetro(delta, forward_speed)
 
 
+func set_acceleration(_delta: float) -> void:
+    var r2_trigger = Input.get_action_strength('R2_button')
+    var accel_mult = accel_curve.sample(r2_trigger)
+    var l2_trigger = Input.get_action_strength('L2_button')
+    var brake_mult = brake_curve.sample(l2_trigger)
+
+    # Suma a steering_angle al frenar
+    steering_angle = 20 + (brake_mult * 10)
+
+    var target_speed_input = (acceleration * accel_mult) - Input.get_action_strength('L2_button') * acceleration * brake_force
+
+    #hace que la aplicacion de speed sea interpolado
+    speed_input = move_toward(
+        speed_input,
+        target_speed_input,
+        70 * _delta
+
+    )
 
 
 func velocimetro(delta: float, forward_speed: float) -> void:
