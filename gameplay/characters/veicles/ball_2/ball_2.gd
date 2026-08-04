@@ -52,10 +52,11 @@ func _physics_process(delta: float) -> void:
 
 
 func set_acceleration(_delta: float) -> void:
-    var r2_trigger = Input.get_action_strength('R2_button')
-    var accel_mult = accel_curve.sample(r2_trigger)
-    var l2_trigger = Input.get_action_strength('L2_button')
-    var brake_mult = brake_curve.sample(l2_trigger)
+    var throttle = Input.get_action_strength('R2_button')
+    var accel_mult = accel_curve.sample(throttle)
+
+    var brake = Input.get_action_strength('L2_button')
+    var brake_mult = brake_curve.sample(brake)
 
     # Suma a steering_angle al frenar
     steering_angle = 20 + (brake_mult * 10)

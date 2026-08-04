@@ -1,6 +1,7 @@
+Node3D
+MeshInstance3D
 Camera3D
 VehicleWheel3D
-MeshInstance3D
 VehicleBody3D
 CollisionShape3D
 Area3D
@@ -8,7 +9,6 @@ Label
 RayCast3D
 SpringArm3D
 RigidBody3D
-Node3D
 CSGCylinder3D
 CSGCombiner3D
 CSGBox3D
