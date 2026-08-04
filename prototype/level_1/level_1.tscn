@@ -2,8 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dj402b7qc3e8j" path="res://gameplay/components/spawn_point/spawn_point.tscn" id="1_8wvq7"]
 [ext_resource type="PackedScene" uid="uid://0l7n36rsao8w" path="res://gameplay/characters/veicles/car_rigidBody/car_rigid_body.tscn" id="2_miw57"]
-[ext_resource type="PackedScene" uid="uid://b7loarqwfqqmr" path="res://gameplay/characters/veicles/ball_2/ball_2.tscn" id="4_748n7"]
-[ext_resource type="PackedScene" uid="uid://dfpatff4d5okj" path="res://addons/godot_3d_cursor/scenes/3d_cursor.tscn" id="5_ak8rs"]
 [ext_resource type="Script" uid="uid://r7fqmh0ecrtj" path="res://prototype/level_1/meta.gd" id="7_r5rgt"]
 
 [sub_resource type="GDScript" id="GDScript_miw57"]
@@ -288,18 +286,6 @@ metadata/_edit_lock_ = true
 
 [node name="CarRigidBody" parent="Characters" unique_id=616349151 instance=ExtResource("2_miw57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.84974, 1.465893, 0)
-
-[node name="Ball_2" parent="." unique_id=663138485 instance=ExtResource("4_748n7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36743784, 1.5880823, 0)
-
-[node name="3DCursor" parent="." unique_id=84758249 instance=ExtResource("5_ak8rs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38874054, 0.25, -11.275709)
-metadata/cursor_id = 0
-metadata/size_scale = 1.0
-metadata/show_title_label = true
-metadata/show_number_label = true
-metadata/scale_affect_labels = true
-metadata/_edit_lock_ = true
 
 [node name="Meta" type="Area3D" parent="." unique_id=149236811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38874054, 0.25, -11.275709)
