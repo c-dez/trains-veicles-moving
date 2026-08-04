@@ -99,7 +99,7 @@ func _physics_process(delta: float) -> void:
 
 
 
-func velocimetro(delta: float, forward_speed: Vector3) -> void:
+func velocimetro(delta: float, forward_speed: float) -> void:
     _time -= delta
     if _time < 0:
         velocimetro_label.text = str(forward_speed * 3.6)
