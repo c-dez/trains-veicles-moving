@@ -18,8 +18,12 @@ var turn_speed := 2.0
 @export var brake_curve: Curve
 
 
-# var forward_speed = linear_velocity.dot(forward)
-# var lateral_speed := linear_velocity.dot(right)
+
+## IDEAS para mejorar el feeling:
+## Podria al frenar incrementar lateral_speed, steering
+# inclinar camara al drifting
+# problema: el mejor feling lo tengo cuando no suelto el acelerador y freno para controlar steering, el problema es que nop tiene caso que el jugador interactue con acelerador y quiero que sea una mezvla entre acelerador y freno para drift
+
 
 
 func _ready() -> void:
@@ -80,12 +84,6 @@ func set_turn_input() -> void:
     pass
 
 
-## IDEAS para mejorar el feeling:
-## Podria al frenar incrementar lateral_speed, steering
-# inclinar camara al drifting
-# problema: el mejor feling lo tengo cuando no suelto el acelerador y freno para controlar steering, el problema es que nop tiene caso que el jugador interactue con acelerador y quiero que sea una mezvla entre acelerador y freno para drift
-
-
 ## object.global_position = global_position
 func set_object_global_position(object: Node3D, _offset: Vector3 = Vector3.ZERO) -> void:
     object.global_position = global_position + _offset
@@ -101,6 +99,7 @@ func girar(delta: float) -> void:
         )
         mesh.global_basis = smoothed_basis.orthonormalized()
     pass
+
 
 func apply_acceleration(delta: float) -> void:
     ## forward direction
