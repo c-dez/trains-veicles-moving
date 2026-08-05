@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
        
         
         #brake
-        reverse(current_speed_ms)
+        # reverse(current_speed_ms)
 
 func reverse(speed: float) -> void:
    

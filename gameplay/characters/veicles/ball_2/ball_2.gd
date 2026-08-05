@@ -9,11 +9,12 @@ var _velocimetro_time = velocimetro_time
 
 var speed_input := 0.0
 var turn_input := 0.0
-var acceleration := 500.0
-var brake_force := 2.5
+@export var acceleration := 500.0
+# var brake_force := 2.5
 var steering_angle := 20.0
-var steering_mult := 1.0
+# var steering_mult := 1.0
 var turn_speed := 2.0
+@export var speed_input_weight := 140.0
 
 @onready var velocimetro_label: Label = $Label
 @onready var mesh: MeshInstance3D = $Mesh
@@ -22,13 +23,11 @@ var turn_speed := 2.0
 
 
 ## IDEAS para mejorar el feeling:
-## Podria al frenar incrementar lateral_speed, steering
 # inclinar camara al drifting
-# problema: el mejor feling lo tengo cuando no suelto el acelerador y freno para controlar steering, el problema es que nop tiene caso que el jugador interactue con acelerador y quiero que sea una mezvla entre acelerador y freno para drift
+# dar un bost de velocidad al salir de un drift
 
 
 func _ready() -> void:
-    # spring.top_level = true
     ray.top_level = true
     mesh.top_level = true
     pass
@@ -40,8 +39,8 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-    set_object_global_position(mesh)
-    set_object_global_position(ray, Vector3(0, -0.9, 0))
+    _set_object_global_position(mesh)
+    _set_object_global_position(ray, Vector3(0, -0.9, 0))
    
     if not ray.is_colliding():
         return
@@ -77,7 +76,7 @@ func set_acceleration(_delta: float) -> void:
     speed_input = move_toward(
         speed_input,
         target_speed,
-        (70 + brake_mult * 120.0 )* _delta
+        (speed_input_weight + brake_mult * 120.0) * _delta
     )
     pass
 
@@ -85,7 +84,7 @@ func set_acceleration(_delta: float) -> void:
 func velocimetro(delta: float, forward_speed: float) -> void:
     _velocimetro_time -= delta
     if _velocimetro_time < 0:
-        velocimetro_label.text = str('%.2f' %(forward_speed * 3.6))
+        velocimetro_label.text = str('%.2f' % (forward_speed * 3.6))
         _velocimetro_time = velocimetro_time
     pass
 
@@ -93,12 +92,6 @@ func velocimetro(delta: float, forward_speed: float) -> void:
 ## toma los inputs de jugador y los convierte a radians para girar direccion de movimiento y los asigna a turn_input
 func set_turn_input() -> void:
     turn_input = (Input.get_action_strength('left') - Input.get_action_strength('right')) * deg_to_rad(steering_angle)
-    pass
-
-
-## object.global_position = global_position
-func set_object_global_position(object: Node3D, _offset: Vector3 = Vector3.ZERO) -> void:
-    object.global_position = global_position + _offset
     pass
 
 
@@ -114,21 +107,18 @@ func girar(delta: float) -> void:
 
 
 func apply_acceleration(delta: float) -> void:
-    ## forward direction
     var forward := -mesh.global_transform.basis.z
-    ## right direction
-    var right := mesh.global_transform.basis.x
 
     apply_central_force(forward * speed_input)
     velocimetro(delta, get_moving_speed(forward))
+
+    # testing etiqueta muestra fuerzas laterales en km/h
+    var right := mesh.global_transform.basis.x
     var lateral_label = $LateralLabel
+    lateral_label.text = str('%.0f m/s' % (get_moving_speed(right)))
 
-    lateral_label.text = str('%.2f'%(get_moving_speed(right)*3.6))
 
-    pass
-
-# testear
-func apply_brake(delta:float)->void:
+func apply_brake(delta: float) -> void:
     var brake := Input.get_action_strength('L2_button')
 
     if brake == 0.0:
@@ -136,37 +126,39 @@ func apply_brake(delta:float)->void:
 
     linear_velocity = linear_velocity.move_toward(
         Vector3.ZERO,
-        brake*brake_curve.sample(brake) * 15* delta
+        brake * brake_curve.sample(brake) * 15 * delta
     )
 
-#testear
-func apply_lateral_grip(delta:float)->void:
-    # var forward = -mesh.global_basis.z
+    apply_central_force(
+        mesh.global_basis.x *
+        turn_input *
+        abs(speed_input) *
+        brake_curve.sample(brake) * 0.3
+    )
+
+
+func apply_lateral_grip(delta: float) -> void:
     var right = mesh.global_basis.x
-
-    # var forward_speed := linear_velocity.dot(forward)
     var lateral_speed := linear_velocity.dot(right)
-
-    # print('lateral: ', lateral_speed)
-
     var brake = Input.get_action_strength('L2_button')
 
-    var grip = lerp(12.0 ,3.0, brake)
-    linear_velocity -= right *lateral_speed
+    var grip = lerp(12.0, 3.0, brake)
+    linear_velocity -= right * lateral_speed
 
-    # lateral_speed = move_toward(
-        # lateral_speed,
-        # 0.0,
-        # grip * delta
-    # )
     linear_velocity += right * move_toward(
         lateral_speed,
         0.0,
         grip * delta
         )
-    # linear_velocity = forward * forward_speed + right * lateral_speed
+
 
 ## Calcula velocidad en m/s de movimiento hacia adelante, tambien puede calcul;ar la velocidad lateral dandole right_basis
 func get_moving_speed(forward_basis: Vector3) -> float:
     var forward_speed := linear_velocity.dot(forward_basis)
     return forward_speed
+
+
+## object.global_position = global_position
+func _set_object_global_position(object: Node3D, _offset: Vector3 = Vector3.ZERO) -> void:
+    object.global_position = global_position + _offset
+    pass
