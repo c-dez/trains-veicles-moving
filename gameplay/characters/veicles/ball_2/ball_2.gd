@@ -48,6 +48,9 @@ func _physics_process(delta: float) -> void:
 
     girar(delta)
     apply_acceleration(delta)
+    apply_lateral_grip(delta)
+    apply_brake(delta)
+    
     pass
 
 
@@ -59,9 +62,13 @@ func set_acceleration(_delta: float) -> void:
     var brake_mult = brake_curve.sample(brake)
 
     # Suma a steering_angle al frenar
-    steering_angle = 20 + (brake_mult * 10)
-    ##SEPARAR BREAK Y ACCEL
-    # var target_speed_input = (acceleration * accel_mult) - Input.get_action_strength('L2_button') * acceleration * brake_force
+    # steering_angle = 20 + (brake_mult * 5)
+
+    var speed = abs(get_moving_speed(-mesh.global_basis.z))
+    var steering_bonus = clamp(speed / 10, 0.0, 1.0)
+
+    steering_angle = 20.0 + brake_mult * 12.0 * steering_bonus
+
     var target_speed: float = acceleration * accel_mult
     if brake > 0.0:
         target_speed = 0.0
@@ -70,7 +77,7 @@ func set_acceleration(_delta: float) -> void:
     speed_input = move_toward(
         speed_input,
         target_speed,
-        (70 + brake * 120.0 )* _delta
+        (70 + brake_mult * 120.0 )* _delta
     )
     pass
 
@@ -78,7 +85,7 @@ func set_acceleration(_delta: float) -> void:
 func velocimetro(delta: float, forward_speed: float) -> void:
     _velocimetro_time -= delta
     if _velocimetro_time < 0:
-        velocimetro_label.text = str(forward_speed * 3.6)
+        velocimetro_label.text = str('%.2f' %(forward_speed * 3.6))
         _velocimetro_time = velocimetro_time
     pass
 
@@ -110,12 +117,54 @@ func apply_acceleration(delta: float) -> void:
     ## forward direction
     var forward := -mesh.global_transform.basis.z
     ## right direction
-    # var right := mesh.global_transform.basis.x
+    var right := mesh.global_transform.basis.x
 
     apply_central_force(forward * speed_input)
     velocimetro(delta, get_moving_speed(forward))
+    var lateral_label = $LateralLabel
+
+    lateral_label.text = str('%.2f'%(get_moving_speed(right)*3.6))
+
     pass
 
+# testear
+func apply_brake(delta:float)->void:
+    var brake := Input.get_action_strength('L2_button')
+
+    if brake == 0.0:
+        return
+
+    linear_velocity = linear_velocity.move_toward(
+        Vector3.ZERO,
+        brake*brake_curve.sample(brake) * 15* delta
+    )
+
+#testear
+func apply_lateral_grip(delta:float)->void:
+    # var forward = -mesh.global_basis.z
+    var right = mesh.global_basis.x
+
+    # var forward_speed := linear_velocity.dot(forward)
+    var lateral_speed := linear_velocity.dot(right)
+
+    # print('lateral: ', lateral_speed)
+
+    var brake = Input.get_action_strength('L2_button')
+
+    var grip = lerp(12.0 ,3.0, brake)
+    linear_velocity -= right *lateral_speed
+
+    # lateral_speed = move_toward(
+        # lateral_speed,
+        # 0.0,
+        # grip * delta
+    # )
+    linear_velocity += right * move_toward(
+        lateral_speed,
+        0.0,
+        grip * delta
+        )
+    # linear_velocity = forward * forward_speed + right * lateral_speed
 
 ## Calcula velocidad en m/s de movimiento hacia adelante, tambien puede calcul;ar la velocidad lateral dandole right_basis
 func get_moving_speed(forward_basis: Vector3) -> float:

@@ -286,7 +286,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.374695, 0.25000095, -11.07
 metadata/_edit_lock_ = true
 
 [node name="Ball_2" parent="Characters" unique_id=663138485 instance=ExtResource("2_748n7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.410887, 2.8547592, 10.306536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.410887, 7.2450514, 10.306536)
 
 [node name="Meta" type="Area3D" parent="." unique_id=149236811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38874054, 0.25, -11.275709)

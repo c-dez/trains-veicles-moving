@@ -1,3 +1,4 @@
+Label
 Node3D
 MeshInstance3D
 Camera3D
@@ -5,7 +6,6 @@ VehicleWheel3D
 VehicleBody3D
 CollisionShape3D
 Area3D
-Label
 RayCast3D
 SpringArm3D
 RigidBody3D
