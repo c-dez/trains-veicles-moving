@@ -9,12 +9,13 @@ var _velocimetro_time = velocimetro_time
 
 var speed_input := 0.0
 var turn_input := 0.0
-@export var acceleration := 500.0
+@export var acceleration := 400.0
+@export var reverse_force := 150.0
 # var brake_force := 2.5
 var steering_angle := 20.0
 # var steering_mult := 1.0
 var turn_speed := 2.0
-@export var speed_input_weight := 140.0
+@export var speed_input_weight := 50.0
 
 @onready var velocimetro_label: Label = $Label
 @onready var mesh: MeshInstance3D = $Mesh
@@ -25,6 +26,8 @@ var turn_speed := 2.0
 ## IDEAS para mejorar el feeling:
 # inclinar camara al drifting
 # dar un bost de velocidad al salir de un drift
+# controlar drift con right analoge
+#https://www.youtube.com/watch?v=lBD92kG9QI8 checar distancia de camara, puede resaltar el camino
 
 
 func _ready() -> void:
@@ -33,8 +36,8 @@ func _ready() -> void:
     pass
 
 
-func _process(_delta: float) -> void:
-    set_acceleration(_delta)
+func _process(delta: float) -> void:
+    set_acceleration(delta)
     set_turn_input()
 
 
@@ -49,8 +52,18 @@ func _physics_process(delta: float) -> void:
     apply_acceleration(delta)
     apply_lateral_grip(delta)
     apply_brake(delta)
+    reverse()
+
     
     pass
+
+
+func reverse() -> void:
+    var brake := Input.get_action_strength('L2_button')
+    # var reverse_force := 150.0
+    if get_moving_speed(-mesh.global_basis.z) <= 1.0:
+        if brake > 0.1:
+            apply_central_force(-mesh.global_basis.z * -reverse_force * brake)
 
 
 func set_acceleration(_delta: float) -> void:
@@ -58,7 +71,7 @@ func set_acceleration(_delta: float) -> void:
     var accel_mult = accel_curve.sample(throttle)
 
     var brake = Input.get_action_strength('L2_button')
-    var brake_mult = brake_curve.sample(brake)
+    # var brake_mult = brake_curve.sample(brake)
 
     # Suma a steering_angle al frenar
     # steering_angle = 20 + (brake_mult * 5)
@@ -66,7 +79,7 @@ func set_acceleration(_delta: float) -> void:
     var speed = abs(get_moving_speed(-mesh.global_basis.z))
     var steering_bonus = clamp(speed / 10, 0.0, 1.0)
 
-    steering_angle = 20.0 + brake_mult * 12.0 * steering_bonus
+    steering_angle = 20.0 + brake_curve.sample(brake) * 12.0 * steering_bonus
 
     var target_speed: float = acceleration * accel_mult
     if brake > 0.0:
@@ -76,7 +89,7 @@ func set_acceleration(_delta: float) -> void:
     speed_input = move_toward(
         speed_input,
         target_speed,
-        (speed_input_weight + brake_mult * 120.0) * _delta
+        (speed_input_weight + brake_curve.sample(brake) * 120.0) * _delta
     )
     pass
 
@@ -96,7 +109,7 @@ func set_turn_input() -> void:
 
 
 func girar(delta: float) -> void:
-    if speed_input > 1.0 or speed_input < 1.0:
+    if abs(get_moving_speed(-mesh.global_basis.z)) > 0.1:
         var current_basis := mesh.global_transform.basis
         var rotated_basis := current_basis.rotated(current_basis.y, turn_input)
         var smoothed_basis := current_basis.orthonormalized().slerp(
@@ -122,6 +135,10 @@ func apply_brake(delta: float) -> void:
     var brake := Input.get_action_strength('L2_button')
 
     if brake == 0.0:
+        return
+
+    #reverse
+    if get_moving_speed(-mesh.global_basis.z) <= 1.0:
         return
 
     linear_velocity = linear_velocity.move_toward(
