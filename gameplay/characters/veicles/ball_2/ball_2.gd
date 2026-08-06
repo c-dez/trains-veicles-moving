@@ -23,6 +23,10 @@ var turn_speed := 2.0
 # @onready var spring: SpringArm3D = $SpringArm3D
 
 
+#debug
+@onready var debug_label:Label = $DebugLabel
+
+
 ## IDEAS para mejorar el feeling:
 # inclinar camara al drifting
 # dar un bost de velocidad al salir de un drift
@@ -43,8 +47,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
     _set_object_global_position(mesh)
-    _set_object_global_position(ray, Vector3(0, -0.9, 0))
-   
+    _set_object_global_position(ray, Vector3(0, -0.8, 0))
+
+    debug_label.text = str(rad_to_deg(turn_input))
+
     if not ray.is_colliding():
         return
 

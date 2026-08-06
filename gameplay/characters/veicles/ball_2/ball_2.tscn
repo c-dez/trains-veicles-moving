@@ -58,3 +58,9 @@ offset_left = 288.0
 offset_top = 254.0
 offset_right = 328.0
 offset_bottom = 277.0
+
+[node name="DebugLabel" type="Label" parent="." unique_id=58837526]
+offset_left = 411.0
+offset_top = 31.0
+offset_right = 451.0
+offset_bottom = 54.0
