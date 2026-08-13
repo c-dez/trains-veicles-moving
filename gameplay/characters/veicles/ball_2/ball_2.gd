@@ -4,7 +4,7 @@ extends RigidBody3D
 @export var accel_curve: Curve
 @export var brake_curve: Curve
 
-var velocimetro_time = 0.5
+var velocimetro_time = 0.2
 var _velocimetro_time = velocimetro_time
 
 var speed_input := 0.0
@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
     reverse()
 
     # capturar turn_input al superar x lateral_grip
-    var _lateral_speed := linear_velocity.dot(mesh.global_basis.x)
+    # var _lateral_speed := linear_velocity.dot(mesh.global_basis.x)
     # if abs(_lateral_speed) > 8.0:
         
     
@@ -148,7 +148,7 @@ func apply_acceleration(delta: float) -> void:
     # testing etiqueta muestra fuerzas laterales en km/h
     var right := mesh.global_transform.basis.x
     var lateral_label = $LateralLabel
-    lateral_label.text = str('%.0f m/s' % (get_moving_speed(right)))
+    lateral_label.text = str('%.0f m/s' % (get_moving_speed(right)*3.6))
 
 
 func apply_brake(delta: float) -> void:
