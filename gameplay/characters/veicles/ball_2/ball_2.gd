@@ -4,18 +4,22 @@ extends RigidBody3D
 @export var accel_curve: Curve
 @export var brake_curve: Curve
 
-var velocimetro_time = 0.2
+var velocimetro_time = 0.5
 var _velocimetro_time = velocimetro_time
 
 var speed_input := 0.0
+## grirar ruedas en radiants
 var turn_input := 0.0
-@export var acceleration := 400.0
+@export var acceleration := 600.0
 @export var reverse_force := 150.0
 # var brake_force := 2.5
-var steering_angle := 20.0
+@export var steering_angle := 25.0
+## Cuando drift se suma este a steering
+@export var drifting_steering_angle := 10.0
+var _steering_angle 
 # var steering_mult := 1.0
 var turn_speed := 2.0
-@export var speed_input_weight := 50.0
+@export var speed_input_weight := 70.0
 
 @onready var velocimetro_label: Label = $Label
 @onready var mesh: MeshInstance3D = $Mesh
@@ -26,6 +30,8 @@ var turn_speed := 2.0
 #debug
 @onready var debug_label:Label = $DebugLabel
 
+# drifting
+var is_drifting:bool = false
 
 ## IDEAS para mejorar el feeling:
 # inclinar camara al drifting
@@ -49,7 +55,7 @@ func _physics_process(delta: float) -> void:
     _set_object_global_position(mesh)
     _set_object_global_position(ray, Vector3(0, -0.8, 0))
 
-    debug_label.text = str(rad_to_deg(turn_input))
+    debug_label.text = str((is_drifting))
 
     if not ray.is_colliding():
         return
@@ -58,8 +64,16 @@ func _physics_process(delta: float) -> void:
     apply_acceleration(delta)
     apply_lateral_grip(delta)
     apply_brake(delta)
+    #reversa se tiene que invertir la direccion
     reverse()
 
+    # capturar turn_input al superar x lateral_grip
+    var _lateral_speed := linear_velocity.dot(mesh.global_basis.x)
+    # if abs(_lateral_speed) > 8.0:
+        
+    var lateral_speed := 8.0
+    is_drifting = true if abs(_lateral_speed) > lateral_speed else false
+    # print(rad_to_deg(turn_input))
     
     pass
 
@@ -79,13 +93,13 @@ func set_acceleration(_delta: float) -> void:
     var brake = Input.get_action_strength('L2_button')
     # var brake_mult = brake_curve.sample(brake)
 
-    # Suma a steering_angle al frenar
-    # steering_angle = 20 + (brake_mult * 5)
+    # Suma a _steering_angle al frenar
+    # _steering_angle = 20 + (brake_mult * 5)
 
     var speed = abs(get_moving_speed(-mesh.global_basis.z))
     var steering_bonus = clamp(speed / 10, 0.0, 1.0)
 
-    steering_angle = 20.0 + brake_curve.sample(brake) * 12.0 * steering_bonus
+    _steering_angle = steering_angle + brake_curve.sample(brake) * drifting_steering_angle* steering_bonus
 
     var target_speed: float = acceleration * accel_mult
     if brake > 0.0:
@@ -95,8 +109,9 @@ func set_acceleration(_delta: float) -> void:
     speed_input = move_toward(
         speed_input,
         target_speed,
-        (speed_input_weight + brake_curve.sample(brake) * 120.0) * _delta
+        (speed_input_weight + accel_curve.sample(throttle) ) * _delta
     )
+
     pass
 
 
@@ -110,7 +125,7 @@ func velocimetro(delta: float, forward_speed: float) -> void:
 
 ## toma los inputs de jugador y los convierte a radians para girar direccion de movimiento y los asigna a turn_input
 func set_turn_input() -> void:
-    turn_input = (Input.get_action_strength('left') - Input.get_action_strength('right')) * deg_to_rad(steering_angle)
+    turn_input = (Input.get_action_strength('left') - Input.get_action_strength('right')) * deg_to_rad(_steering_angle)
     pass
 
 
@@ -165,7 +180,7 @@ func apply_lateral_grip(delta: float) -> void:
     var lateral_speed := linear_velocity.dot(right)
     var brake = Input.get_action_strength('L2_button')
 
-    var grip = lerp(12.0, 3.0, brake)
+    var grip = lerp(15.0, 3.0, brake)
     linear_velocity -= right * lateral_speed
 
     linear_velocity += right * move_toward(

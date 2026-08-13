@@ -1,0 +1,34 @@
+extends SpringArm3D
+class_name Camera
+
+@onready var mesh:MeshInstance3D = owner.get_node("Mesh")
+@export var hight_offset:float = 1.0
+@export var weight:float = 20.0
+
+
+func _ready() -> void:
+    top_level = true
+
+
+func _process(delta: float) -> void:
+    _set_camera_position(delta)
+
+var offset:float = 0
+func _set_camera_position(delta)->void:
+    global_position = Vector3(mesh.global_position.x, mesh.global_position.y + hight_offset, mesh.global_position.z)
+    var lateral = owner.linear_velocity.dot(mesh.global_basis.x)
+
+    offset = lerp(
+        0.0,
+        lateral * 0.8 ,
+        1.5* delta
+    )
+
+    var camera_target:= mesh.rotation.y 
+    rotation.y = lerp_angle(
+        rotation.y,
+        camera_target + offset,
+        weight*delta
+    )
+    
+    pass
