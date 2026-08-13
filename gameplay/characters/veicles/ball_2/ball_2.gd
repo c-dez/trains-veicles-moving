@@ -25,6 +25,7 @@ var turn_speed := 2.0
 @onready var mesh: MeshInstance3D = $Mesh
 @onready var ray: RayCast3D = $Ray
 # @onready var spring: SpringArm3D = $SpringArm3D
+# @onready var interior:Node3D = $Interior
 
 
 #debug
@@ -43,17 +44,23 @@ var is_drifting:bool = false
 func _ready() -> void:
     ray.top_level = true
     mesh.top_level = true
+    # interior.top_level = true
     pass
 
 
 func _process(delta: float) -> void:
     set_acceleration(delta)
     set_turn_input()
+    # interior.global_position = $Camera/Camera3D.global_position
+    # interior.global_basis = $Camera/Camera3D.global_basis
 
 
 func _physics_process(delta: float) -> void:
     _set_object_global_position(mesh)
     _set_object_global_position(ray, Vector3(0, -0.8, 0))
+    # _set_object_global_position(interior,Vector3(0.0,0,0))
+    # interior.global_basis = mesh.global_basis
+
 
     # debug_label.text = str((is_drifting))
 

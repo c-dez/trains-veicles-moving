@@ -4,6 +4,7 @@
 [ext_resource type="Curve" uid="uid://cugnpr7oj4cbm" path="res://gameplay/characters/veicles/ball_2/brake_curve.tres" id="2_5eiyd"]
 [ext_resource type="Curve" uid="uid://dhat277a0vby0" path="res://gameplay/characters/veicles/ball_2/accel_curve.tres" id="2_y58nf"]
 [ext_resource type="Script" uid="uid://ya17kfcdyv3" path="res://gameplay/characters/veicles/ball_2/camera.gd" id="4_h8dks"]
+[ext_resource type="PackedScene" uid="uid://combri42j52uj" path="res://gameplay/characters/veicles/ball_2/interior/interior.tscn" id="5_mh3kc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bfhhu"]
 bounce = 0.1
@@ -33,9 +34,14 @@ weight = 10.0
 transform = Transform3D(0.6615043, 0, 0, 0, 0.855846, 0.001208217, 0, -0.0014937345, 0.6922566, 0, 0, 0)
 current = true
 
+[node name="Interior" parent="Camera/Camera3D" unique_id=755995022 instance=ExtResource("5_mh3kc")]
+transform = Transform3D(1, 0, 0, 0, 0.9999928, -0.0037933197, 0, 0.00379332, 0.99999285, -0.07793935, 0, 0)
+
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=622788150]
 transform = Transform3D(1.511706, 0, 0, 0, 1, 0, 0, 0, 2.1734254, 0, -0.18511963, 0.2759288)
+visible = false
 mesh = SubResource("BoxMesh_e6xge")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1323369458]
 shape = SubResource("SphereShape3D_5eiyd")
@@ -45,22 +51,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9175177, 0)
 
 [node name="Label" type="Label" parent="." unique_id=1041655198]
 anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 0.089
-anchor_bottom = 0.59300005
-offset_left = 206.0
-offset_top = -3.0
-offset_right = 206.472
-offset_bottom = 8.235962
+anchor_left = 0.36200002
+anchor_top = 0.83100003
+anchor_right = 0.432
+anchor_bottom = 0.89100003
 grow_vertical = 2
 
 [node name="LateralLabel" type="Label" parent="." unique_id=192806762]
+visible = false
 offset_left = 288.0
 offset_top = 254.0
 offset_right = 328.0
 offset_bottom = 277.0
 
 [node name="DebugLabel" type="Label" parent="." unique_id=58837526]
+visible = false
 offset_left = 411.0
 offset_top = 31.0
 offset_right = 451.0
