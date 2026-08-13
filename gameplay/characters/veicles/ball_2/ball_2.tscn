@@ -9,6 +9,7 @@
 bounce = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_e6xge"]
+size = Vector3(1, 0.62976074, 1.1669922)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5eiyd"]
 radius = 1.0
@@ -24,17 +25,16 @@ brake_curve = ExtResource("2_5eiyd")
 
 [node name="Camera" type="SpringArm3D" parent="." unique_id=532459588]
 transform = Transform3D(1.5117059, 0, 0, 0, 0.99999994, 0, 0, 0, 2.1734254, 0, 0, 0)
-spring_length = 1.2
 script = ExtResource("4_h8dks")
-hight_offset = 3.295
+hight_offset = 2.0
 weight = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="Camera" unique_id=137436697]
-transform = Transform3D(0.6615043, 0, 0, 0, 0.8296972, 0.16981593, 0, -0.20994566, 0.671106, 0, 0, 0)
+transform = Transform3D(0.6615043, 0, 0, 0, 0.855846, 0.001208217, 0, -0.0014937345, 0.6922566, 0, 0, 0)
 current = true
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=622788150]
-transform = Transform3D(1.511706, 0, 0, 0, 1, 0, 0, 0, 2.1734254, 0, 0, 0)
+transform = Transform3D(1.511706, 0, 0, 0, 1, 0, 0, 0, 2.1734254, 0, -0.18511963, 0.2759288)
 mesh = SubResource("BoxMesh_e6xge")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1323369458]
