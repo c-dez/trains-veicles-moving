@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
     _set_object_global_position(mesh)
     _set_object_global_position(ray, Vector3(0, -0.8, 0))
 
-    debug_label.text = str((is_drifting))
+    # debug_label.text = str((is_drifting))
 
     if not ray.is_colliding():
         return
@@ -71,8 +71,7 @@ func _physics_process(delta: float) -> void:
     var _lateral_speed := linear_velocity.dot(mesh.global_basis.x)
     # if abs(_lateral_speed) > 8.0:
         
-    var lateral_speed := 8.0
-    is_drifting = true if abs(_lateral_speed) > lateral_speed else false
+    
     # print(rad_to_deg(turn_input))
     
     pass

@@ -21,7 +21,7 @@ func _set_camera_position(delta)->void:
     offset = lerp(
         0.0,
         lateral * 0.8 ,
-        1.5* delta
+        4* delta
     )
 
     var camera_target:= mesh.rotation.y 
