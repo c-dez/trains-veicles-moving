@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
     _set_camera_position(delta)
-
+    # cambiar match, no necesita cada frame checar
     match current_camera:
         camera.first:
             hight_offset = 1.0
