@@ -27,7 +27,7 @@ radial_segments = 8
 [sub_resource type="BoxMesh" id="BoxMesh_3iqn3"]
 size = Vector3(0.265, 0.055, 0.01)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_b34sq"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_y3jou"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Interior" type="Node3D" unique_id=755995022]
@@ -62,8 +62,12 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.13
 mesh = SubResource("CylinderMesh_y3jou")
 
 [node name="mirror" type="MeshInstance3D" parent="." unique_id=1726627020]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09210239, -0.2894304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.111903846, -0.2894304)
 mesh = SubResource("BoxMesh_3iqn3")
+
+[node name="Sprite3D" type="Sprite3D" parent="mirror" unique_id=254148501]
+transform = Transform3D(0.05000246, 0, 0, 0, 0.040677216, 0, 0, 0, 1, 0, 0, 0.0071107447)
+texture = SubResource("ViewportTexture_y3jou")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1999896200]
 size = Vector2i(512, 128)
@@ -85,7 +89,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1375245335]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = SubResource("ViewportTexture_b34sq")
