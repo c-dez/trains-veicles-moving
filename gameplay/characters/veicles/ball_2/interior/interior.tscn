@@ -42,7 +42,7 @@ transform = Transform3D(0.7742212, 0, 0, 0, 0.76367354, -0.64560264, 0, 0.645602
 mesh = SubResource("BoxMesh_y3jou")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1185631691]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005987078, 0.16896239, -0.11398294)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005987078, 0.17964065, -0.11398294)
 mesh = SubResource("BoxMesh_utgjw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=583580601]
@@ -76,20 +76,5 @@ render_target_update_mode = 4
 [node name="RearCamera" type="Camera3D" parent="SubViewport" unique_id=1926761155]
 transform = Transform3D(-1, -1.0075578e-15, 8.742278e-08, 0, 1, 1.1525117e-08, -8.742278e-08, 1.1525117e-08, -1, -3.3687263e-16, 0.3343457, 3.853373e-09)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=42573199]
-
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1138966890]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1375245335]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Marker3D" type="Marker3D" parent="." unique_id=665753286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.34277374)
