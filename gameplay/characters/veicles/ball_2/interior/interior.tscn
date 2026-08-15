@@ -45,7 +45,7 @@ mesh = SubResource("BoxMesh_y3jou")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005987078, 0.17964065, -0.11398294)
 mesh = SubResource("BoxMesh_utgjw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=583580601]
+[node name="Frente" type="MeshInstance3D" parent="." unique_id=583580601]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0024414063, -0.3581543, -0.67936057)
 mesh = SubResource("BoxMesh_t6v3t")
 

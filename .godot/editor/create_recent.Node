@@ -1,3 +1,6 @@
+SpotLight3D
+MeshInstance3D
+Node3D
 Marker3D
 Sprite3D
 TextureRect
@@ -5,11 +8,7 @@ Control
 CanvasLayer
 SubViewport
 Camera3D
-MeshInstance3D
-Node3D
 Camera
 Label
 VehicleWheel3D
 VehicleBody3D
-CollisionShape3D
-Area3D

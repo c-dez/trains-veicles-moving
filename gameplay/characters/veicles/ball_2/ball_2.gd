@@ -1,5 +1,5 @@
 extends RigidBody3D
-# no he encontrado soluciones satisfactorias a los compromisos usando RigidBody para un carro, pero fue una buena base para drifting
+
 
 @export var accel_curve: Curve
 @export var brake_curve: Curve

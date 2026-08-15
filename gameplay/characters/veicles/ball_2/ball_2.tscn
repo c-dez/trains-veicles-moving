@@ -37,6 +37,13 @@ current = true
 [node name="Interior" parent="Camera/Camera3D" unique_id=755995022 instance=ExtResource("5_mh3kc")]
 transform = Transform3D(1, 0, 0, 0, 0.9999928, -0.0037933197, 0, 0.00379332, 0.99999285, -0.07793935, 0, 0)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera/Camera3D" unique_id=1723459583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1025154, -0.25766516, -1.257969)
+light_color = Color(0.99661547, 0.8168725, 0.6077984, 1)
+spot_range = 100.0
+spot_attenuation = 0.0
+spot_angle = 55.4
+
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=622788150]
 transform = Transform3D(1.511706, 0, 0, 0, 1, 0, 0, 0, 2.1734254, 0, -0.18511963, 0.2759288)
 visible = false
