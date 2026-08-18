@@ -1,5 +1,5 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1786765832
+::res://::1787013223
 _icon.svg::CompressedTexture2D::7529472994851353181::1786658052::1786658052::1::::<><><>0<>0<>49c04eaa32bbbccd5015602f8272d284<>res://.godot/imported/_icon.svg-b6805cafd738bd25799945300ae3bea3.ctex::
 export_presets.cfg::TextFile::-1::1786658052::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::417352315506991021::1786658052::1786658052::1::::<><><>0<>0<>56666f46b83c9293a00083599608d2ee<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
@@ -22,11 +22,11 @@ player.gd::GDScript::4071200800470462792::1786658052::0::1::::Player<>CharacterB
 ::res://gameplay/characters/veicles/::1786658052
 ::res://gameplay/characters/veicles/ball/::1786658052
 ball.gd::GDScript::8492480595517464329::1786658052::0::1::::<>Node3D<><>0<>0<><>::
-::res://gameplay/characters/veicles/ball_2/::1786679329
+::res://gameplay/characters/veicles/ball_2/::1786825798
 accel_curve.tres::Curve::7651787526058706565::1786658052::0::1::::<><><>0<>0<><>::
 ai_script.gd::GDScript::6323733437907658422::1786658052::0::1::::<>RigidBody3D<><>0<>0<><>::
-ball_2.gd::GDScript::3813367098778708198::1786658052::0::1::::<>RigidBody3D<><>0<>0<><>::
-ball_2.tscn::PackedScene::4656022791924257273::1786679329::0::1::::<><><>0<>0<><>::uid://bulhumogrbe5c::::res://gameplay/characters/veicles/ball_2/ball_2.gd<>uid://cugnpr7oj4cbm::::res://gameplay/characters/veicles/ball_2/brake_curve.tres<>uid://dhat277a0vby0::::res://gameplay/characters/veicles/ball_2/accel_curve.tres<>uid://ya17kfcdyv3::::res://gameplay/characters/veicles/ball_2/camera.gd<>uid://combri42j52uj::::res://gameplay/characters/veicles/ball_2/interior/interior.tscn
+ball_2.gd::GDScript::3813367098778708198::1786825798::0::1::::<>RigidBody3D<><>0<>0<><>::
+ball_2.tscn::PackedScene::4656022791924257273::1786825798::0::1::::<><><>0<>0<><>::uid://bulhumogrbe5c::::res://gameplay/characters/veicles/ball_2/ball_2.gd<>uid://cugnpr7oj4cbm::::res://gameplay/characters/veicles/ball_2/brake_curve.tres<>uid://dhat277a0vby0::::res://gameplay/characters/veicles/ball_2/accel_curve.tres<>uid://ya17kfcdyv3::::res://gameplay/characters/veicles/ball_2/camera.gd<>uid://combri42j52uj::::res://gameplay/characters/veicles/ball_2/interior/interior.tscn
 brake_curve.tres::Curve::6189821557465704814::1786658052::0::1::::<><><>0<>0<><>::
 camera.gd::GDScript::49593193164206878::1786658052::0::1::::Camera<>SpringArm3D<><>0<>0<><>::
 ::res://gameplay/characters/veicles/ball_2/interior/::1786678563
@@ -70,8 +70,8 @@ train_scene.gd::GDScript::5787821693038875734::1786658052::0::1::::<>Node3D<><>0
 train_scene.tscn::PackedScene::1592069270704371597::1786658052::0::1::::<><><>0<>0<><>::uid://c3cm2dyhyu84l::::res://gameplay/characters/player/player.tscn<>uid://copwtv14irmpa::::res://levels/train/train_scene.gd<>uid://cnur6ieft5r0g::::res://levels/train/train_wagon.tscn
 train_wagon.tscn::PackedScene::5727671864869686236::1786658052::0::1::::<><><>0<>0<><>::
 ::res://prototype/::1786658052
-::res://prototype/level_1/::1786685441
-level_1.tscn::PackedScene::876519668811989633::1786685441::0::1::::<><><>0<>0<><>::uid://dj402b7qc3e8j::::res://gameplay/components/spawn_point/spawn_point.tscn<>uid://b7loarqwfqqmr::::res://gameplay/characters/veicles/ball_2/ball_2.tscn
+::res://prototype/level_1/::1786765919
+level_1.tscn::PackedScene::876519668811989633::1786765919::0::1::::<><><>0<>0<><>::uid://dj402b7qc3e8j::::res://gameplay/components/spawn_point/spawn_point.tscn<>uid://b7loarqwfqqmr::::res://gameplay/characters/veicles/ball_2/ball_2.tscn
 meta.gd::GDScript::1259603229877936515::1786658052::0::1::::<>Area3D<><>0<>0<><>::
 ::res://prototype/level_2/::1786658052
 level_2.tscn::PackedScene::6919513490780811483::1786658052::0::1::::<><><>0<>0<><>::
