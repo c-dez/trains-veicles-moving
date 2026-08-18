@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://mqufeol86snx"]
 
 [ext_resource type="PackedScene" uid="uid://dj402b7qc3e8j" path="res://gameplay/components/spawn_point/spawn_point.tscn" id="1_8wvq7"]
-[ext_resource type="PackedScene" uid="uid://b7loarqwfqqmr" path="res://gameplay/characters/veicles/ball_2/ball_2.tscn" id="2_748n7"]
+[ext_resource type="PackedScene" uid="uid://b7loarqwfqqmr" path="res://gameplay/characters/veicles/car/ball_2.tscn" id="2_748n7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_itv7y"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

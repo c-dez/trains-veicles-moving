@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://combri42j52uj"]
 
-[ext_resource type="Script" uid="uid://syjibwpbq3xc" path="res://gameplay/characters/veicles/ball_2/interior/interior.gd" id="1_irq1c"]
+[ext_resource type="Script" uid="uid://syjibwpbq3xc" path="res://gameplay/characters/veicles/car/interior/interior.gd" id="1_irq1c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_y3jou"]
 size = Vector3(0.05291748, 0.5840454, 0.03112793)

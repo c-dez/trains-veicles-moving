@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b7loarqwfqqmr"]
 
-[ext_resource type="Script" uid="uid://bulhumogrbe5c" path="res://gameplay/characters/veicles/ball_2/ball_2.gd" id="1_e6xge"]
-[ext_resource type="Curve" uid="uid://cugnpr7oj4cbm" path="res://gameplay/characters/veicles/ball_2/brake_curve.tres" id="2_5eiyd"]
-[ext_resource type="Curve" uid="uid://dhat277a0vby0" path="res://gameplay/characters/veicles/ball_2/accel_curve.tres" id="2_y58nf"]
-[ext_resource type="Script" uid="uid://ya17kfcdyv3" path="res://gameplay/characters/veicles/ball_2/camera.gd" id="4_h8dks"]
-[ext_resource type="PackedScene" uid="uid://combri42j52uj" path="res://gameplay/characters/veicles/ball_2/interior/interior.tscn" id="5_mh3kc"]
+[ext_resource type="Script" uid="uid://bulhumogrbe5c" path="res://gameplay/characters/veicles/car/ball_2.gd" id="1_e6xge"]
+[ext_resource type="Curve" uid="uid://cugnpr7oj4cbm" path="res://gameplay/characters/veicles/car/brake_curve.tres" id="2_5eiyd"]
+[ext_resource type="Curve" uid="uid://dhat277a0vby0" path="res://gameplay/characters/veicles/car/accel_curve.tres" id="2_y58nf"]
+[ext_resource type="Script" uid="uid://ya17kfcdyv3" path="res://gameplay/characters/veicles/car/camera.gd" id="4_h8dks"]
+[ext_resource type="PackedScene" uid="uid://combri42j52uj" path="res://gameplay/characters/veicles/car/interior/interior.tscn" id="5_mh3kc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bfhhu"]
 bounce = 0.1
