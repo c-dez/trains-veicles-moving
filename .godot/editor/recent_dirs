@@ -1,10 +1,7 @@
-res://gameplay/characters/veicles/ball_2/interior/
-/home/catz/Games/car/
-res://gameplay/vhehicles/my_vehicle/
-res://gameplay/characters/veicles/ball_2/
-res://gameplay/characters/veicles/ball/
-res://gameplay/characters/veicles/car_rigidBody/
-res://gameplay/characters/veicles/wheel/
+res://road/
+res://
+res://terrain_data/
+res://levels/main/
 res://prototype/level_1/
 res://gameplay/characters/veicles/car/
 res://levels/train/

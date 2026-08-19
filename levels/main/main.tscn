@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://r6os4tqw573h"]
+
+[ext_resource type="PackedScene" uid="uid://b7loarqwfqqmr" path="res://gameplay/characters/veicles/car/ball_2.tscn" id="4_q42nm"]
+
+[sub_resource type="Curve3D" id="Curve3D_y3jou"]
+closed = true
+_data = {
+"points": PackedVector3Array(-20.9874, -2.135147, -16.007412, 20.9874, 2.135147, 16.007412, 17.984962, 3.338314, -16.026974, 0, 0, 0, 0, 0, 0, 21.004517, 3.4672241, 21.3433, 10.503073, 0.12736893, 7.7909336, -10.503073, -0.12736893, -7.7909336, -14.725164, -2.8621979, 25.091778, 0, 0, 0, 0, 0, 0, -24.216183, -4.151287, -10.320726),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Node3D" type="Node3D" unique_id=1183386474]
+
+[node name="Node" type="Node" parent="." unique_id=1128676536]
+
+[node name="Ball_2" parent="." unique_id=663138485 instance=ExtResource("4_q42nm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.7267, 1.0000076, 0)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=855688757]
+curve = SubResource("Curve3D_y3jou")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1046135150]
+polygon = PackedVector2Array(-4, 0, 4, 0, 4, -0.2, -4, -0.2)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true

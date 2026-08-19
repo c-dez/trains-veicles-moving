@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="train"
-config/tags=PackedStringArray("template", "tools")
+config/tags=PackedStringArray("tools")
 run/main_scene="uid://mqufeol86snx"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
